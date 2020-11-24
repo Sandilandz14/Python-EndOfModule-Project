@@ -31,8 +31,8 @@ lottoNum3 = StringVar()
 lottoNum4 = StringVar()
 lottoNum5 = StringVar()
 lottoNum6 = StringVar()
-
-label1 = LabelFrame(window, text = "Text", bd = 20, insertwidth = 1, font =("Arial",20), justify = CENTER)
-#playButton = Button(window, text = "Press to Play", command = pick)
+#
+# label1 = LabelFrame(window, text = "Text", bd = 20, insertwidth = 1, font =("Arial",20), justify = CENTER)
+# #playButton = Button(window, text = "Press to Play", command = pick)
 
 window.mainloop()

@@ -2,13 +2,13 @@ import random
 
 def menu():
     # Ask player for numbers
-    user_numbers = get_player_numbers()
+    enter_numbers = get_player_numbers()
 
     # Calculate lottery numbers
-    lottery_numbers = create_lottery_numbers()
+    lotto_numbers = create_lottery_numbers()
 
     # Print out the winnings
-    matched_numbers = user_numbers.intersection(lottery_numbers)
+    matched_numbers = enter_numbers.intersection(lotto_numbers)
     print("You matched {}. You won ${}!".format(matched_numbers, 100 ** len(matched_numbers)))
 
 
@@ -25,7 +25,7 @@ def get_player_numbers():
 def create_lottery_numbers():
     values = set()  # Cannot initialise like so: {}
     while len(values) < 6:
-        values.add(random.randint(1, 20))
+        values.add(random.randint(1, 49))
     return values
 
 menu()

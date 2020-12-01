@@ -1,0 +1,9 @@
+Name: hg
+ID: 895
+Age: 23
+Sorry you got 2 correct
+The results were: [3, 6, 21, 33, 34]
+Jackpot ball is: 11
+You won R20
+
+Date: 11/30/20

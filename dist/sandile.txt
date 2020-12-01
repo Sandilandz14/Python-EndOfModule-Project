@@ -1,0 +1,7 @@
+Name: Masande Gontyeleni
+Age: 23
+Sorry you got 0 correct
+These are the outcomes: [1, 13, 23, 27, 42]
+Bonus ball is: 30
+Sorry, you have won nothing...
+Date: 11/30/20

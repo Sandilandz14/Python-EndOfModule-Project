@@ -1,0 +1,6 @@
+Name: Sandile Tukani
+Age: 24
+Sorry you got 0 correct
+These are the outcomes: [3, 6, 29, 33, 41, 48]
+Sorry, you have won nothing...
+Date: 12/01/20

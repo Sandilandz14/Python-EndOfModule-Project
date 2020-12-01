@@ -1,28 +1,126 @@
-import tkinter
+#Sandile Tukani Class 3(with Thapelo)
+from datetime import *
 from tkinter import *
 from tkinter import messagebox
 import random
-from random import shuffle
-from tkinter import ttk
 
 
-mywindow = Tk()
-mywindow.geometry = ("600x600")
-mywindow.title("Ithuba Lottery: Lottery Numbers")
+window = Tk()
+window.geometry =("300x300")
+window.title("Ithuba Lottery: Age Restriction")
+random_no = random.sample(range(1, 49), 6)
 
-#random_no = random.randint(range(1, 49),6)
-randomz = list(range(1,49))
-lottoNum = []
+lottery = []
+name_ = Entry(window, width=15)
+name_.place(x=60,y=50)
+name_label = Label(window, text="Name:")
+name_label.place(x=10, y=50)
 
-for i in range(6):
-    shuffle(randomz)
-    n = randomz.pop()
-    lottoNum.append(n)
+age_num = Entry(window, text="Age:", width=15)
+age_num.place(x=60,y=80)
+age_label = Label(window, text="Age:")
+age_label.place(x=10, y=80)
 
-lottoNum.sort()
+date_label = Label(window)
+date_label.config(text="Date: "+datetime.now().strftime("%m/%d/%y"))
+
+file = "sandile.txt"
 
 
 
+def age_confirm():
+    try:
+        if int(age_num.get()) < 18:
+            messagebox.showwarning("Error!", "You are underage!")
+            window.destroy()
+
+        elif int(age_num.get()) >= 18:
+
+         yourName = name_.get()
+         yourAge = age_num.get()
+         currentDate = str(date_label.cget("text"))
+         messagebox.display("Go through","Proceed to play lotto!!!!!!!")
 
 
-mywindow.mainloop()
+
+    except:
+        if age_num == str(age_num):
+            messagebox.showinfo("Enter valid input")
+
+
+    ####################################################################################################################
+    ####################################################################################################################
+    ####################################################################################################################
+        my_window = Tk()
+        my_window.geometry = ("500x500")
+        my_window.title("Ithuba Lottery: Lottery Numbers")
+        #
+        # system_label = Label(my_window, text = "Ithuba Lottery: Lotto Numbers", font = ('Arial Black',30))
+        # system_label.place(x=300,y=5)
+
+
+        try:
+            #Creates widgets to enter numbers
+            # and labels
+            num_A = Entry(my_window,width=6)
+            num_A.place(x=5,y=25)
+            num_B = Entry(my_window,width=6)
+            num_B.place(x=50,y=25)
+            num_C = Entry(my_window,width=6)
+            num_C.place(x=5,y=45)
+            num_D = Entry(my_window,width=6)
+            num_D.place(x=50,y=45)
+            num_E = Entry(my_window,width=6)
+            num_E.place(x=5,y=65)
+            num_F = Entry(my_window,width=6)
+            num_F.place(x=50,y=65)
+            label_this = Label(my_window, text="Enter Lotto numbers:")
+            label_this.place(x=5, y=5)
+            outcome_label = Label(my_window)
+            outcome_label.place(x=5,y=130)
+
+        except ValueError as e:
+            messagebox.showerror("Error", "Enter number"+e)
+
+
+        def lottoFunction():
+
+            lottery.append(int(num_A.get()))
+            lottery.append(int(num_B.get()))
+            lottery.append(int(num_C.get()))
+            lottery.append(int(num_D.get()))
+            lottery.append(int(num_E.get()))
+            lottery.append(int(num_F.get()))
+
+
+            correct_numbers = set(lottery).intersection(random_no)
+
+            if lottery == random_no:
+                outcome_label.config(text="Name: "+yourName+"\n"+"Age: "+yourAge+"\n"+"You got all correct\n" + "These are the outcomes: " + str(sorted(random_no[0:6])) +"\n"+"Can you believe it??.. YOU HAVE WON THE JACKPOT OF R10 000 000.00"+"\n"+currentDate)
+            elif len(correct_numbers) == 0:
+                outcome_label.config(text="Name: "+yourName+"\n"+"Age: "+yourAge+"\n"+"Sorry you got 0 correct\n" + "These are the outcomes: "+ str(sorted(random_no[0:6])) +"\n"+"Sorry, you have won nothing..."+"\n"+currentDate)
+            elif len(correct_numbers) == 1:
+               outcome_label.config(text="Name: "+yourName+"\n"+"Age: "+yourAge+"\n"+"Unfortunately, you got 1 correct\n" + "These are the outcomes: "+ str(sorted(random_no[0:6])) +"\n"+"Unfortunately, you have won nothing..."+"\n"+currentDate)
+            elif len(correct_numbers) == 2:
+                outcome_label.config(text="Name: "+yourName+"\n"+"Age: "+yourAge+"\n"+"Unfortunately, you got 2 correct\n" + "These are the outcomes: " + str(sorted(random_no[0:6]))+"\n"+"You won R20"+"\n"+currentDate)
+            elif len(correct_numbers) == 3:
+                outcome_label.config(text="Name: "+yourName+"\n"+"Age: "+yourAge+"\n"+"Hey, you got 3 correct\n" + "These are the outcomes: "+ str(sorted(random_no[0:6])) +"\n"+"You have won R100.50"+"\n"+"\n"+currentDate)
+            elif len(correct_numbers) == 4:
+                outcome_label.config(text="Name: "+yourName+"\n"+"Age: "+yourAge+"\n"+"You have gotten 4 correct\n" +"These are the outcomes: "+ str(sorted(random_no[0:6])) +"\n"+"You have won R2,384.00"+"\n"+currentDate)
+            elif len(correct_numbers)== 5:
+                outcome_label.config(text="Name: "+yourName+"\n"+"Age: "+yourAge+"\n"+"You have gotten 5 correct\n" + "These are the outcomes: "+ str(sorted(random_no[0:6])) +"\n"+"You have won R8,584.00"+"\n"+currentDate)
+            f = open(file, "w+")
+            f.close()
+            f = open(file, "a")
+            outcomes = outcome_label.cget("text")
+            f.write(outcomes)
+            f.close()
+
+        lottoFunc_button = Button(my_window, text="Check Outcomes", command=lottoFunction)
+        lottoFunc_button.place(x=5, y=90)
+
+
+age_button = Button(window, command=age_confirm, text="Enter Lotto")
+age_button.place(x=90,y=105)
+date_label.place(x=10,y=20)
+window.mainloop()
